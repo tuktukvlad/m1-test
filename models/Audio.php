@@ -19,4 +19,28 @@ use app\components\DbModel;
  	public $storage;
  	public $year;
 
+
+ 	public function fields()
+ 	{
+ 		return [
+ 			/*'id' => 'Id',*/
+ 			'name' => 'Название альбома',
+ 			'artist' => 'Исполнитель',
+ 			'duration' => 'Длительность',
+ 			'image' => 'обложка',
+ 			'cost' => 'Стоимость',
+ 			'purchase_date' => 'Дата покупки',
+ 			'storage' => 'Место хранения',
+ 			'year' => 'Год',
+ 		];
+ 	}
+
+
+ 	public function delete() {
+ 		if (!empty($this->image) && file_exists (ROOT."/public".$this->image)) {
+ 			unlink(ROOT."/public".$this->image);
+ 		}
+ 		parent::delete();
+ 	}
+
  } ?>

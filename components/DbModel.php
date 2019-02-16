@@ -43,9 +43,102 @@ class DbModel
 		return $found;*/
 	}
 
-	static function find_all() {
-		return self::find_by_sql("SELECT * FROM ".static::$table);
+	static function find_all($where = [], $order = []) {
+		$sql = "SELECT * FROM ".static::$table;
+		if (!empty($where)) {
+			$prepare_data= [];
+			$model = new static;
+			foreach ($where as $key => $value) {
+				if (array_key_exists($key, $model->fields())) {
+					$prepare_data[]= $key."=".$model->_db->quote($value);
+				}			
+			}
+			$sql .= " WHERE " . join(", ", $prepare_data);
+		}
+		
+		return self::find_by_sql($sql);
 	}
+
+	public function save() {
+		return isset($this->id) ? $this->update() : $this->create();
+	}
+
+	public function create() {
+
+		$db = $this->_db;
+		
+		$fields = get_object_vars($this);
+
+		$prepare_data= [];
+
+		foreach (get_object_vars($this) as $key => $value) {
+			if (array_key_exists($key, $this->fields())) {
+				$prepare_data[$key]= $db->quote($value) ;
+			}			
+		}
+		
+		$sql = "INSERT INTO " . static::$table . " (";
+		$sql .= join(", ", array_keys($prepare_data));
+		$sql .= ") VALUES (";
+		$sql .= join(", ", array_values($prepare_data));
+		$sql .= ")";
+
+		
+		if ($db->query($sql)) {
+			$this->id = $db->lastInsertId();
+			return true;
+		}
+		return false;
+	}
+
+	public function update() {
+		$db = $this->_db;
+
+		$prepare_data= [];
+		foreach (get_object_vars($this) as $key => $value) {
+			if (array_key_exists($key, $this->fields())) {
+				$prepare_data[]= $key."=".$db->quote($value);
+			}			
+		}
+		
+		$sql = "UPDATE " . static::$table . " SET ";
+		$sql .= join(", ", $prepare_data);
+		$sql .= " WHERE id=" . $db->quote($this->id);
+
+		return $db->query($sql) ? true : false;
+	}
+
+	public function delete() {
+		$db = $this->_db;
+
+		$sql = "DELETE FROM " . static::$table;
+		$sql .= " WHERE id=" . $db->quote($this->id);
+		$sql .= " LIMIT 1";
+
+		$db->query($sql);
+
+		return $db->query($sql) ? true : false;
+	}
+
+
+	public function load($array) {
+		foreach ($array as $field => $value) {
+			if (property_exists($this, $field )) {
+				$this->$field = $value;
+			}
+		}
+		return $this;
+	}
+
+	public function checkImage($type)
+	{
+	    $allowedTypes = array("image/pjpeg", "image/jpeg", "image/jpg", "image/png", "image/x-png", "image/gif");
+
+	    if (!in_array($type, $allowedTypes)) {
+	        return false;
+	    }
+	    return true;
+	}	
 }
 
  ?>

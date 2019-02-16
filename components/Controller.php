@@ -25,6 +25,12 @@ class Controller
 		return $view->renderLayout($this->layout, $this->layoutPath, $content);
 	}
 
+	public function goto($url) {
+    $url = nl2br(strip_tags($url));
+    header("Location: {$url}");
+    exit();
+}
+
 }
 
  ?>

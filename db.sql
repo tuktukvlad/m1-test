@@ -22,18 +22,19 @@ CREATE TABLE IF NOT EXISTS `audio` (
   `name` char(255) NOT NULL,
   `artist` char(255) NOT NULL,
   `duration` time NOT NULL,
-  `image` char(255) NOT NULL,
+  `image` char(255) DEFAULT NULL,
   `cost` float NOT NULL,
   `purchase_date` date NOT NULL,
-  `storage` varchar(255) NOT NULL,
+  `storage` varchar(255) DEFAULT NULL,
   `year` year(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы m1-test.audio: ~1 rows (приблизительно)
 /*!40000 ALTER TABLE `audio` DISABLE KEYS */;
 REPLACE INTO `audio` (`id`, `name`, `artist`, `duration`, `image`, `cost`, `purchase_date`, `storage`, `year`) VALUES
-	(1, 'Carnal Mind', 'L-Side', '01:17:35', '/uploads/l-side.jpg', 17.55, '2018-09-30', '{1:2:3}', '2018');
+	(1, 'Carnal Mind', 'L-Side', '01:17:35', '/uploads/1.jpg', 17.55, '2018-09-30', '', '2017'),
+	(35, 'Funky House', 'MH', '01:59:00', '/uploads/35.jpg', 15.56, '2018-04-02', '', '2018');
 /*!40000 ALTER TABLE `audio` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
