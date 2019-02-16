@@ -27,7 +27,6 @@
 			<form>
 				<select name="year" class="form-control mb-3" title="Выберите год" required="">
 			        <option value="" disabled <?= empty($_GET) ? "selected" : null ?>>Выберите год</option>
-			        <? print_r($_GET) ?>
 			        <option value="2016" <?= (!empty($_GET) && $_GET['year'] == '2016') ? "selected" : null ?>>2016</option>
 			        <option value="2017" <?= (!empty($_GET) && $_GET['year'] == '2017') ? "selected" : null ?>>2017</option>
 			        <option value="2018" <?= (!empty($_GET) && $_GET['year'] == '2018') ? "selected" : null ?>>2018</option>

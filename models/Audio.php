@@ -23,7 +23,6 @@ use app\components\DbModel;
  	public function fields()
  	{
  		return [
- 			/*'id' => 'Id',*/
  			'name' => 'Название альбома',
  			'artist' => 'Исполнитель',
  			'duration' => 'Длительность',
