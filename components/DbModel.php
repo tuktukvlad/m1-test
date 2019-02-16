@@ -39,8 +39,6 @@ class DbModel
 		$db = (new static)->_db;
 		$result_array = self::find_by_sql("SELECT * FROM ".static::$table." WHERE id=".$db->quote($id)." LIMIT 1");
 		return !empty($result_array) ? array_shift($result_array) : false;
-		/*$found = $database->fetch_array($result_set);
-		return $found;*/
 	}
 
 	static function find_all($where = [], $order = []) {

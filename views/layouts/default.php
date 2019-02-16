@@ -9,8 +9,9 @@
 	<nav class="navbar navbar-dark bg-dark">
 		<div class="container">
 	  <a class="navbar-brand" href="/">Моя коллекция</a>
-
+			<a class="mt-1 text-success small mr-auto" href="/about">Обо мне</a>
 	    <div class="navbar-nav">
+
 	      <a class="btn btn-success" href="/audio/create">Новый альбом</a>
 	    </div>
 		</div>

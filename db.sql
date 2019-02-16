@@ -30,11 +30,15 @@ CREATE TABLE IF NOT EXISTS `audio` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы m1-test.audio: ~1 rows (приблизительно)
+-- Дамп данных таблицы m1-test.audio: ~2 rows (приблизительно)
 /*!40000 ALTER TABLE `audio` DISABLE KEYS */;
 REPLACE INTO `audio` (`id`, `name`, `artist`, `duration`, `image`, `cost`, `purchase_date`, `storage`, `year`) VALUES
 	(1, 'Carnal Mind', 'L-Side', '01:17:35', '/uploads/1.jpg', 17.55, '2018-09-30', '', '2017'),
-	(35, 'Funky House', 'MH', '01:59:00', '/uploads/35.jpg', 15.56, '2018-04-02', '', '2018');
+	(36, 'Funky House', 'Minsk House', '02:20:00', '/uploads/36.jpg', 15.55, '2018-03-02', '', '2018'),
+	(37, 'Sold Out', 'Sergei Oblomov', '01:15:00', '/uploads/37.jpg', 10.99, '2017-08-02', '', '2017'),
+	(38, 'Irvine Radio Show', 'Otnicka', '01:01:00', '/uploads/38.jpg', 7.85, '2019-02-06', '', '2019'),
+	(39, 'Deepwibe Session', 'Deepwibe Records', '01:50:00', '/uploads/39.jpg', 16.5, '2019-02-08', '', '2019'),
+	(40, 'Special Mixes', 'Sasha Minus', '02:50:00', '/uploads/40.jpg', 14.99, '2018-09-09', '', '2018');
 /*!40000 ALTER TABLE `audio` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

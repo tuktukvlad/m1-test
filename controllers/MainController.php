@@ -12,9 +12,7 @@ use app\models\Audio;
  {
  	
  	public function actionIndex() {
- 		/*if (!empty($_GET)) {
- 			print_r($_GET);
- 		}*/
+ 		
  		$audio = Audio::find_all($_GET);
  		return $this->render('index.php', compact('audio'));
  	}
