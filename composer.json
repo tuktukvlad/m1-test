@@ -1,0 +1,19 @@
+{
+    "name": "tuktukvlad/m1-test",
+    "description": "Test task Audio CD",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Vladislav",
+            "email": "tuktukvlad@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+    	"psr-4": {
+    		"": "",
+    		"app\\": ""
+    	}
+    }
+}
